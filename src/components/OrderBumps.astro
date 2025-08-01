@@ -1,0 +1,301 @@
+---
+// Order Bumps component
+---
+
+<section class="bg-gray-950 py-16 px-6" id="comprar">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white flex items-center justify-center">
+        <img src="/puzzle-piece.png" alt="Puzzle piece" class="w-10 h-10 mr-3">
+        Agr&eacute;g&aacute; estos recursos extra a tu compra:
+      </h2>
+      <p class="text-xl text-gray-300">
+        Recomendados por otros programadores principiantes
+      </p>
+    </div>
+
+    <div class="space-y-6 mb-12">
+      <div class="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
+        <label class="flex items-start space-x-4" for="bump1">
+          <input type="checkbox" id="bump1" class="mt-2 w-5 h-5 text-green-500 bg-gray-700 border-gray-600 rounded focus:ring-green-500 focus:ring-2">
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-white flex items-center">
+                <img src="/small-blue-diamond.png" alt="Diamond" class="w-6 h-6 mr-2">
+                Checklist de Proyectos para 14 d&iacute;as
+              </h3>
+              <span class="text-green-400 font-bold text-xl">$7</span>
+            </div>
+            <p class="text-gray-300 mb-3">Empez&aacute; a practicar desde ya con proyectos reales y guiados</p>
+            <div class="flex items-center text-green-400 text-sm">
+              <img src="/check-mark-button.png" alt="Check" class="w-4 h-4 mr-2">
+              <span>14 proyectos paso a paso</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
+        <label class="flex items-start space-x-4" for="bump2">
+          <input type="checkbox" id="bump2" class="mt-2 w-5 h-5 text-green-500 bg-gray-700 border-gray-600 rounded focus:ring-green-500 focus:ring-2">
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-white flex items-center">
+                <img src="/small-blue-diamond.png" alt="Diamond" class="w-6 h-6 mr-2">
+                Planificador Semanal para Principiantes
+              </h3>
+              <span class="text-green-400 font-bold text-xl">$5</span>
+            </div>
+            <p class="text-gray-300 mb-3">Organiz&aacute; tu estudio con foco desde el primer d&iacute;a</p>
+            <div class="flex items-center text-green-400 text-sm">
+              <img src="/check-mark-button.png" alt="Check" class="w-4 h-4 mr-2">
+              <span>Plantillas editables + tips de productividad</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
+        <label class="flex items-start space-x-4" for="bump3">
+          <input type="checkbox" id="bump3" class="mt-2 w-5 h-5 text-green-500 bg-gray-700 border-gray-600 rounded focus:ring-green-500 focus:ring-2">
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold text-white flex items-center">
+                <img src="/small-blue-diamond.png" alt="Diamond" class="w-6 h-6 mr-2">
+                Hoja de Atajos de Teclado para VS Code
+              </h3>
+              <span class="text-green-400 font-bold text-xl">$6</span>
+            </div>
+            <p class="text-gray-300 mb-3">Program&aacute; m&aacute;s r&aacute;pido y con menos errores desde hoy</p>
+            <div class="flex items-center text-green-400 text-sm">
+              <img src="/check-mark-button.png" alt="Check" class="w-4 h-4 mr-2">
+              <span>50+ atajos esenciales + PDF imprimible</span>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="text-center bg-gradient-to-r from-blue-600 to-green-600 p-8 rounded-lg">
+      <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center justify-center">
+        <img src="/money-with-wings.png" alt="Money with wings" class="w-8 h-8 mr-3">
+        Valor final:
+      </h3>
+      <div class="text-4xl font-bold text-white mb-2" id="finalPrice">
+        $17
+      </div>
+      <div class="text-lg text-green-100 mb-4">
+        Segu&iacute;s ahorrando
+        <span id="savings">$70</span>
+      </div>
+      <button 
+        class="bg-white text-gray-900 px-8 py-4 rounded-lg text-xl font-bold hover:bg-gray-100 transition-colors"
+        onclick="handlePurchase()"
+        id="purchaseButton"
+      >
+        COMPRAR AHORA
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de compra -->
+<div id="purchaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+  <div class="bg-gray-900 rounded-lg p-8 max-w-md w-full border border-gray-700">
+    <div class="text-center mb-6">
+      <h3 class="text-2xl font-bold text-white mb-2">¡Completa tu compra!</h3>
+      <p class="text-gray-300">Un paso m&aacute;s para transformar tu futuro</p>
+    </div>
+    
+    <form id="purchaseForm" class="space-y-4">
+      <div>
+        <label class="block text-white text-sm font-medium mb-2">Nombre completo</label>
+        <input type="text" id="customerName" required class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500">
+      </div>
+      
+      <div>
+        <label class="block text-white text-sm font-medium mb-2">Email</label>
+        <input type="email" id="customerEmail" required class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500">
+      </div>
+      
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h4 class="text-white font-semibold mb-2">Resumen de tu compra:</h4>
+        <div id="orderSummary" class="text-gray-300 text-sm space-y-1">
+          <!-- Se llena dinámicamente -->
+        </div>
+        <div class="border-t border-gray-600 mt-3 pt-3">
+          <div class="flex justify-between text-white font-bold">
+            <span>Total:</span>
+            <span id="modalTotal">$17</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex space-x-3">
+        <button type="button" onclick="closePurchaseModal()" class="flex-1 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+          Cancelar
+        </button>
+        <button type="submit" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+          Confirmar Compra
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const finalPriceEl = document.getElementById('finalPrice') as HTMLElement;
+  const savingsEl = document.getElementById('savings') as HTMLElement;
+  const purchaseModal = document.getElementById('purchaseModal') as HTMLElement;
+  const orderSummary = document.getElementById('orderSummary') as HTMLElement;
+  const modalTotal = document.getElementById('modalTotal') as HTMLElement;
+  const purchaseForm = document.getElementById('purchaseForm') as HTMLFormElement;
+  
+  let basePrice = 17;
+  const bumpPrices = [7, 5, 6];
+  const bumpNames = [
+    'Checklist de Proyectos para 14 días',
+    'Planificador Semanal para Principiantes', 
+    'Hoja de Atajos de Teclado para VS Code'
+  ];
+  const originalPrice = 87;
+
+  function updatePrice(): void {
+    let total = basePrice;
+    const selectedBumps: string[] = [];
+    
+    checkboxes.forEach((checkbox, index) => {
+      if ((checkbox as HTMLInputElement).checked) {
+        total += bumpPrices[index];
+        selectedBumps.push(bumpNames[index]);
+      }
+    });
+    
+    const savings = originalPrice - total;
+    
+    if (finalPriceEl) {
+      finalPriceEl.textContent = `$${total}`;
+    }
+    
+    if (savingsEl) {
+      savingsEl.textContent = `$${savings}`;
+    }
+    
+    if (modalTotal) {
+      modalTotal.textContent = `$${total}`;
+    }
+    
+    // Actualizar resumen del modal
+    updateOrderSummary(total, selectedBumps);
+  }
+
+  function updateOrderSummary(total: number, selectedBumps: string[]): void {
+    if (!orderSummary) return;
+    
+    let summaryHTML = `
+      <div class="text-green-400">✓ Ruta Express para Programadores - $17</div>
+    `;
+    
+    selectedBumps.forEach((bumpName, index) => {
+      summaryHTML += `<div class="text-green-400">✓ ${bumpName} - $${bumpPrices[index]}</div>`;
+    });
+    
+    orderSummary.innerHTML = summaryHTML;
+  }
+
+  function showPurchaseModal(): void {
+    if (purchaseModal) {
+      purchaseModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closePurchaseModal(): void {
+    if (purchaseModal) {
+      purchaseModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  function handlePurchase(): void {
+    showPurchaseModal();
+  }
+
+  function processPurchase(event: Event): void {
+    event.preventDefault();
+    
+    const name = (document.getElementById('customerName') as HTMLInputElement).value;
+    const email = (document.getElementById('customerEmail') as HTMLInputElement).value;
+    
+    if (!name || !email) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+    
+    // Simular procesamiento de pago
+    const button = event.target as HTMLButtonElement;
+    const originalText = button.textContent;
+    button.textContent = 'Procesando...';
+    button.disabled = true;
+    
+    setTimeout(() => {
+      // Aquí iría la integración real con el sistema de pagos
+      console.log('Datos de compra:', {
+        name,
+        email,
+        total: finalPriceEl?.textContent,
+        selectedBumps: Array.from(checkboxes)
+          .map((checkbox, index) => (checkbox as HTMLInputElement).checked ? bumpNames[index] : null)
+          .filter(name => name !== null)
+      });
+      
+      // Simular éxito
+      closePurchaseModal();
+      showSuccessMessage();
+      
+      // Resetear formulario
+      purchaseForm.reset();
+      button.textContent = originalText;
+      button.disabled = false;
+    }, 2000);
+  }
+
+  function showSuccessMessage(): void {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg z-50';
+    successDiv.innerHTML = `
+      <div class="flex items-center">
+        <img src="/check-mark-button.png" alt="Success" class="w-5 h-5 mr-2">
+        <span>¡Compra exitosa! Revisa tu email para acceder al contenido.</span>
+      </div>
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    setTimeout(() => {
+      successDiv.remove();
+    }, 5000);
+  }
+
+  // Event listeners
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updatePrice);
+  });
+
+  purchaseForm.addEventListener('submit', processPurchase);
+
+  // Cerrar modal con Escape
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePurchaseModal();
+    }
+  });
+
+  // Cerrar modal haciendo clic fuera
+  purchaseModal?.addEventListener('click', (event) => {
+    if (event.target === purchaseModal) {
+      closePurchaseModal();
+    }
+  });
+</script> 

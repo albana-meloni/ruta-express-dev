@@ -1,16 +1,44 @@
 ---
+layout: '../layouts/BaseLayout.astro'
 
+import Hero from '../components/Hero.astro';
+import CountdownTimer from '../components/CountdownTimer.astro';
+import WhatIncludes from '../components/WhatIncludes.astro';
+import Bonuses from '../components/Bonuses.astro';
+import OrderBumps from '../components/OrderBumps.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Guarantee from '../components/Guarantee.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FutureVision from '../components/FutureVision.astro';
+import FAQ from '../components/FAQ.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<!-- Hero Section -->
+<Hero />
+
+<!-- Countdown Timer -->
+<CountdownTimer />
+
+<!-- What Includes -->
+<WhatIncludes />
+
+<!-- Bonuses -->
+<Bonuses />
+
+<!-- Order Bumps -->
+<OrderBumps />
+
+<!-- About Me -->
+<!-- <AboutMe /> -->
+
+<!-- Guarantee -->
+<Guarantee />
+
+<!-- Testimonials -->
+<Testimonials />
+
+<!-- Future Vision -->
+<FutureVision />
+
+<!-- FAQ -->
+<FAQ />
